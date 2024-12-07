@@ -6,7 +6,34 @@
         xmlns:local="clr-namespace:ProgressBar_Demo"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Begin"
+                   Target="InputBeginValue"/>
+            <TextBox x:Name="InputBeginValue"
+                     Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="End"
+                   Target="InputEndValue"/>
+            <TextBox x:Name="InputEndValue"
+                     Width="200"/>
+        </StackPanel>
+        
+        <Grid>
+            <ProgressBar x:Name="Progress"
+                         Minimum="{Binding ElementName=InputBeginValue, Path=Text}"
+                         Maximum="{Binding ElementName=InputEndValue, Path=Text}"
+                         Height="25"
+                         Background="LightBlue"/>
+            <TextBlock x:Name="ProgressText"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </Grid>
+        
+        <Button Content="Start"
+                Click="ButtonStart_OnClick"/>
+        <Button Content="Stop"
+                Click="ButtonStop_OnClick"/>
+    </StackPanel>
 </Window>
